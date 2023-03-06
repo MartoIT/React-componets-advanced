@@ -4,6 +4,7 @@ import Footer from "./componets/Footer";
 import Header from "./componets/Header";
 import Search from "./componets/Search";
 import UserList from "./componets/UserList";
+import AddUser from './services/addUser';
 import getAll from './services/usersServices';
 
 function App() {
@@ -11,8 +12,10 @@ function App() {
 
   useEffect(()=> {
     getAll()
-    .then(res => console.log(res))
+    .then(res => setUsers(res.users))
   }, [])
+
+  
 
   return (
     <>
@@ -23,9 +26,9 @@ function App() {
       <section className="card users-container">
         <Search />
 
-        <UserList />
+        <UserList users={users} />
 
-        <button className="btn-add btn">Add new user</button>
+        <button className="btn-add btn" onClick={() => <AddUser/>}>Add new user</button>
 
       </section>
   
