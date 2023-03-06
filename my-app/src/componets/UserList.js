@@ -1,4 +1,5 @@
 import { useState } from "react";
+import getOne from "../services/findeUserById";
 import UserDetails from "./UserDetails";
 import User from "./Users";
 
@@ -6,17 +7,20 @@ export default function UserList({users}) {
 
     const [selectUser, setSelectUser] = useState(null);
 
-    const onInfoClick = (userId) => {
-      const user = users.find(x => x._id === userId);
-      if(user){
-        setSelectUser(user);
-      }
+    const onInfoClick =  async (userId) => {
+
+      const user = await getOne(userId);
+      setSelectUser(user)
       
+    }
+
+    const onClose = () => {
+      setSelectUser(null)
     }
 
     return (
       <>
-     { selectUser && <UserDetails {...selectUser} />}
+     { selectUser && <UserDetails {...selectUser} onClose={onClose}/>}
       <div className="table-wrapper">
         <table className="table">
           <thead>

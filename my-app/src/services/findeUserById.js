@@ -4,5 +4,5 @@ export default  async function getOne(id){
 
     const response = await fetch(`${baseURL}/${id}`);
     const result = await response.json();
-    return result;
+    return result.user;
 }

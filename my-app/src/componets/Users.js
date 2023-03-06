@@ -5,7 +5,8 @@ export default function User ({_id,
   imageUrl,
   createdAt,
   phoneNumber,
-  onInfoClick
+  onInfoClick,
+ 
 }) {
      return (
         <tr>
