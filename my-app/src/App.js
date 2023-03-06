@@ -1,9 +1,19 @@
+import {useState, useEffect} from 'react';
+
 import Footer from "./componets/Footer";
 import Header from "./componets/Header";
 import Search from "./componets/Search";
 import UserList from "./componets/UserList";
+import getAll from './services/usersServices';
 
 function App() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(()=> {
+    getAll()
+    .then(res => console.log(res))
+  }, [])
+
   return (
     <>
       <Header />
