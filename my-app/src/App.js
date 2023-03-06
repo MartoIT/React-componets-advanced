@@ -3,8 +3,8 @@ import {useState, useEffect} from 'react';
 import Footer from "./componets/Footer";
 import Header from "./componets/Header";
 import Search from "./componets/Search";
+import UserDetails from './componets/UserDetails';
 import UserList from "./componets/UserList";
-import AddUser from './services/addUser';
 import getAll from './services/usersServices';
 
 function App() {
@@ -14,9 +14,7 @@ function App() {
     getAll()
     .then(res => setUsers(res.users))
   }, [])
-
-  
-
+ 
   return (
     <>
       <Header />
@@ -28,7 +26,7 @@ function App() {
 
         <UserList users={users} />
 
-        <button className="btn-add btn" onClick={() => <AddUser/>}>Add new user</button>
+        <button className="btn-add btn">Add new user</button>
 
       </section>
   

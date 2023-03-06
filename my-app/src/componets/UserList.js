@@ -1,7 +1,19 @@
+import { useState } from "react";
+import UserDetails from "./UserDetails";
 import User from "./Users";
 
 export default function UserList({users}) {
+
+    const [selectUser, setSelectUser] = useState(null);
+
+    const onInfoClick = (userId) => {
+      setSelectUser(userId);
+    }
+
     return (
+      <>
+      
+      <div className="table-wrapper">
         <table className="table">
           <thead>
             <tr>
@@ -63,5 +75,8 @@ export default function UserList({users}) {
            
           </tbody>
         </table>
+        </div>
+      </>
+      
     );
 };
