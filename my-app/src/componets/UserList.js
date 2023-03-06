@@ -7,12 +7,16 @@ export default function UserList({users}) {
     const [selectUser, setSelectUser] = useState(null);
 
     const onInfoClick = (userId) => {
-      setSelectUser(userId);
+      const user = users.find(x => x._id === userId);
+      if(user){
+        setSelectUser(user);
+      }
+      
     }
 
     return (
       <>
-      
+     { selectUser && <UserDetails {...selectUser} />}
       <div className="table-wrapper">
         <table className="table">
           <thead>
@@ -71,7 +75,7 @@ export default function UserList({users}) {
           </thead>
           <tbody>
            
-          {users.map(u => <User key={u._id} {...u} />)}
+          {users.map(u => <User key={u._id} {...u} onInfoClick={onInfoClick} />)}
            
           </tbody>
         </table>

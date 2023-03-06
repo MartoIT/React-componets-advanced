@@ -1,15 +1,23 @@
-export default function User ({...user}) {
+export default function User ({_id,
+  firstName,
+  lastName,
+  email,
+  imageUrl,
+  createdAt,
+  phoneNumber,
+  onInfoClick
+}) {
      return (
         <tr>
         <td>
-          <img src={user.imageUrl}
-            alt={`${user.firstName} ${user.lastName}`} className="image" />
+          <img src={imageUrl}
+            alt={`${firstName} ${lastName}`} className="image" />
         </td>
-        <td>{user.firstName}</td>
-        <td>{user.lastName}</td>
-        <td>{user.email}</td>
-        <td>{user.phoneNumber}</td>
-        <td>{user.createdAt}</td>
+        <td>{firstName}</td>
+        <td>{lastName}</td>
+        <td>{email}</td>
+        <td>{phoneNumber}</td>
+        <td>{createdAt}</td>
 
         <td className="actions">
           <button className="btn edit-btn" title="Edit">
@@ -29,7 +37,7 @@ export default function User ({...user}) {
               </path>
             </svg>
           </button>
-          <button className="btn info-btn" title="Info">
+          <button className="btn info-btn" title="Info" onClick={() => onInfoClick(_id)}>
             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="info"
               className="svg-inline--fa fa-info" role="img" xmlns="http://www.w3.org/2000/svg"
               viewBox="-150 0 512 612">

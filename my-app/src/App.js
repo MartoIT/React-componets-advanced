@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react';
 import Footer from "./componets/Footer";
 import Header from "./componets/Header";
 import Search from "./componets/Search";
-import UserDetails from './componets/UserDetails';
+
 import UserList from "./componets/UserList";
 import getAll from './services/usersServices';
 
