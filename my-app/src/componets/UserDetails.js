@@ -9,7 +9,8 @@ export default function UserDetails({_id,
   updatedAt,
   phoneNumber,
   address,
-  onClose
+  onClose,
+  
 }) {
       
 

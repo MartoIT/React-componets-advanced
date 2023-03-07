@@ -1,6 +1,7 @@
 export default function AddNewUser({
   onClose,
-  onSubmitCreateNewUser
+  onSubmitCreateNewUser,
+  onClickShowEdit
 }) {
     return (
         <div className="overlay">
@@ -18,7 +19,7 @@ export default function AddNewUser({
                 </svg>
               </button>
             </header>
-            <form onSubmit={(e) => onSubmitCreateNewUser(e)}>
+            <form onSubmit={(e) => onSubmitCreateNewUser(e) }>
               <div className="form-row">
                 <div className="form-group">
                   <label htmlFor="firstName">First name</label>

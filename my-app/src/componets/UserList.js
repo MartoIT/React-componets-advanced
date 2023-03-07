@@ -7,10 +7,12 @@ import User from "./Users";
 
 export default function UserList({ users,
   onSubmitCreateNewUser,
+  onClickShowEdit,
 }) {
 
   const [selectUser, setSelectUser] = useState(null);
   const [addNewUser, setNewUser] = useState(false)
+  const [editUser, setEditUser] = useState(false)
   const [deleteUser, setDelteUser] = useState(false)
 
   const onInfoClick = async (userId) => {
@@ -36,10 +38,15 @@ export default function UserList({ users,
     setDelteUser(true)
   };
 
+  const onEditClick = async (e) => {
+    onClickShowEdit(e)
+    setEditUser(true)
+  };
   const onClose = () => {
     setSelectUser(null)
     setNewUser(false)
     setDelteUser(false)
+   
   };
 
   return (
@@ -47,6 +54,7 @@ export default function UserList({ users,
       {selectUser && <UserDetails {...selectUser} onClose={onClose} />}
       {addNewUser && <AddNewUser onClose={onClose} onSubmitCreateNewUser={clickToAddNewUser} />}
       {deleteUser && <DeleteUser onClose={onClose} />}
+      {editUser && <AddNewUser onClose={onClose} onClickShowEdit={onEditClick}/>}
       <div className="table-wrapper">
         <table className="table">
           <thead>
@@ -105,7 +113,7 @@ export default function UserList({ users,
           </thead>
           <tbody>
 
-            {users.map(u => <User key={u._id} {...u} onInfoClick={onInfoClick} onDeleteClick={onDeleteClick} />)}
+            {users.map(u => <User key={u._id} {...u} onInfoClick={onInfoClick} onDeleteClick={onDeleteClick} onEditClick={onEditClick} />)}
 
           </tbody>
         </table>

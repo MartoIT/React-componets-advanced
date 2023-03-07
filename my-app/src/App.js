@@ -19,7 +19,12 @@ function App() {
     e.preventDefault();
     console.log('Tuk');
 
-  }
+  };
+  const onClickShowEdit = async (e) =>{
+    e.preventDefault();
+    console.log('Tuk Edit');
+
+  };
   return (
     <>
       <Header />
@@ -29,7 +34,7 @@ function App() {
       <section className="card users-container">
         <Search />
 
-        <UserList users={users} onSubmitCreateNewUser={onSubmitCreateNewUser}/>
+        <UserList users={users} onSubmitCreateNewUser={onSubmitCreateNewUser} onClickShowEdit={onClickShowEdit}/>
 
         
 
