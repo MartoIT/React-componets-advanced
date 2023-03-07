@@ -5,13 +5,13 @@ import Header from "./componets/Header";
 import Search from "./componets/Search";
 
 import UserList from "./componets/UserList";
-import getAll from './services/usersServices';
+import services from './services/usersServices';
 
 function App() {
   const [users, setUsers] = useState([]);
 
   useEffect(()=> {
-    getAll()
+    services.getAll()
     .then(res => setUsers(res.users))
   }, [])
  
@@ -26,7 +26,7 @@ function App() {
 
         <UserList users={users} />
 
-        <button className="btn-add btn">Add new user</button>
+        
 
       </section>
   

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import getOne from "../services/findeUserById";
+import services from "../services/usersServices";
 import UserDetails from "./UserDetails";
 import User from "./Users";
 
@@ -9,7 +9,7 @@ export default function UserList({users}) {
 
     const onInfoClick =  async (userId) => {
 
-      const user = await getOne(userId);
+      const user = await services.getOne(userId);
       setSelectUser(user)
       
     }
@@ -84,6 +84,7 @@ export default function UserList({users}) {
           </tbody>
         </table>
         </div>
+        <button className="btn-add btn">Add new user</button>
       </>
       
     );
