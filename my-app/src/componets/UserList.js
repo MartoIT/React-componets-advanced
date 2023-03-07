@@ -4,7 +4,9 @@ import AddNewUser from "./AddNewUser";
 import UserDetails from "./UserDetails";
 import User from "./Users";
 
-export default function UserList({users}) {
+export default function UserList({users,
+  onSubmitCreateNewUser,
+}) {
 
     const [selectUser, setSelectUser] = useState(null);
     const [addNewUser, setNewUser] = useState(false)
@@ -16,7 +18,8 @@ export default function UserList({users}) {
       
     };
 
-    const clickToAddNewUser = async () => {
+    const clickToAddNewUser = async (e) => {
+      onSubmitCreateNewUser(e)
       setNewUser(true)
 
     }
@@ -29,7 +32,7 @@ export default function UserList({users}) {
     return (
       <>
      { selectUser && <UserDetails {...selectUser} onClose={onClose}/>}
-     {addNewUser && <AddNewUser onClose={onClose} />}
+     {addNewUser && <AddNewUser  onClose={onClose} onSubmitCreateNewUser={clickToAddNewUser}/>}
       <div className="table-wrapper">
         <table className="table">
           <thead>

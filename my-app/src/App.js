@@ -15,6 +15,11 @@ function App() {
     .then(res => setUsers(res.users))
   }, [])
  
+  const onSubmitCreateNewUser = async (e) =>{
+    e.preventDefault();
+    console.log('Tuk');
+
+  }
   return (
     <>
       <Header />
@@ -24,7 +29,7 @@ function App() {
       <section className="card users-container">
         <Search />
 
-        <UserList users={users} />
+        <UserList users={users} onSubmitCreateNewUser={onSubmitCreateNewUser}/>
 
         
 
