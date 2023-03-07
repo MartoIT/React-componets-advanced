@@ -1,26 +1,35 @@
 import { useState } from "react";
 import services from "../services/usersServices";
+import AddNewUser from "./AddNewUser";
 import UserDetails from "./UserDetails";
 import User from "./Users";
 
 export default function UserList({users}) {
 
     const [selectUser, setSelectUser] = useState(null);
+    const [addNewUser, setNewUser] = useState(false)
 
     const onInfoClick =  async (userId) => {
 
       const user = await services.getOne(userId);
       setSelectUser(user)
       
+    };
+
+    const clickToAddNewUser = async () => {
+      setNewUser(true)
+
     }
 
     const onClose = () => {
       setSelectUser(null)
-    }
+      setNewUser(false)
+    };
 
     return (
       <>
      { selectUser && <UserDetails {...selectUser} onClose={onClose}/>}
+     {addNewUser && <AddNewUser onClose={onClose} />}
       <div className="table-wrapper">
         <table className="table">
           <thead>
@@ -84,7 +93,7 @@ export default function UserList({users}) {
           </tbody>
         </table>
         </div>
-        <button className="btn-add btn">Add new user</button>
+        <button className="btn-add btn" onClick={clickToAddNewUser}>Add new user</button>
       </>
       
     );
