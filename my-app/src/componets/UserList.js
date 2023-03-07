@@ -22,6 +22,12 @@ export default function UserList({users,
       onSubmitCreateNewUser(e)
       setNewUser(true)
 
+    };
+
+    const clickToAddNewUser1 = async (e) => {
+      
+      setNewUser(true)
+
     }
 
     const onClose = () => {
@@ -96,7 +102,7 @@ export default function UserList({users,
           </tbody>
         </table>
         </div>
-        <button className="btn-add btn" onClick={clickToAddNewUser}>Add new user</button>
+        <button className="btn-add btn" onClick={clickToAddNewUser1}>Add new user</button>
       </>
       
     );
